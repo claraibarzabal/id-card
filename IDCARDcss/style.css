@@ -1,0 +1,334 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,200&display=swap');
+*
+/*Use felxbox en general y algo de grid para las columnas. Podria haber usado flex.)*/
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 190vh;
+    background-image: linear-gradient(125deg, #fda761, #ff5a97); /* Estilo de gradiente */
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.card
+{
+    position: relative;
+    width: 350px;
+    height: 190px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 35px 80px rgba(0, 0, 0, 0.35);
+    transition: 0.5s;
+}
+
+.card:hover
+{
+    /*height: 450px;*/
+    height: auto; /* Cambie la altura a 'auto' para que se ajuste al contenido */
+    width: auto;
+    box-shadow: 0 35px 80px rgba(0, 0, 0, 0.35); /* Agregue sombra al contenedor cuando la tarjeta se expande */
+}
+
+
+.imgBx
+{
+    position: relative;  /* Para que la imagen se posicione correctamente dentro del contenedor */
+    left: 50%;
+    top: -60px;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 150px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.35); /* Estilo de sombra para .imgBx */
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+.card:hover .imgBx
+{
+    width: 250px;
+    height: 250px;
+}
+
+
+
+.imgBx img
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card .content
+{
+    top: -25px; /* ESTE define la distancia texto h2 - imagen.*/
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Cambie align-items para que el contenido comience desde la parte superior */
+    overflow: hidden; /*queda escondido el extra*/
+}   
+
+
+.card .content .details
+{
+    text-align: center;
+    width: 100%;
+    /*height: 100%; elimine ///la altura - para que ocupe todo el espacio disponible-.*/ 
+    transition: 0.5s;  
+}
+
+
+.card:hover .content .details /*al poner el cursor todo se queda en su sitio aunq se expanda*/
+{
+    transform: translateY(0px);
+}
+
+.card .content .details h2
+{
+    font-size: 1.20em;
+    font-weight: 600;
+    color: #555;
+    line-height: 1.2em;
+    left: 50%; /* Alinee el h2 en el centro horizontal */
+    transform: translateX(-50%); /* Centre el h2 en el contenedor */
+    position: relative; /* Cambie a posición relativa */
+    width: 100%; /* Para que que el contenedor de detalles ocupe todo el ancho de la tarjeta */
+    height: 100%; /* Ajuste la altura del h2 para que ocupe todo en vez de la mitad del contenedor de detalles */
+}
+
+.section1
+{
+    color: #555; /* Si saco este todo el texto principal queda negro.*/
+}
+.card .content .details h2 span
+{
+    font-size: 0.90em;
+    font-weight: 500;
+    color: #ff4964;
+}
+
+.card .content .details .hiddentext
+
+{
+    visibility: hidden; /* Oculte el contenido */
+    transition: opacity 0.5s; /* Agregue una transición de 0.5 segundos para suavizar el efecto */
+    opacity: 0; /* Establezco la opacidad inicialmente en 0 */
+}
+
+.card:hover .content .details .hiddentext
+{
+    visibility: visible; /* Hago visible el contenido */
+    opacity: 1; /* Cuando el usuario coloca el cursor sobre la tarjeta, el contenido se muestra con una transición suave */
+}
+
+.card .content .details .data
+{
+    display: flex;
+    justify-content: space-evenly;
+    /*Dividi el margin para ayor control.*/
+    margin-top: 20px; /* Margen superior */
+    margin-bottom: 10px; /* Margen inferior(dist con Conocimientos) */
+    padding-bottom: 20px; /* Ajuste el padding(interno) inferior para separar el h3 del borde inferior */
+}
+
+
+.card .content .details .data h3
+{
+    font-size: 1em;
+    color: #555;
+    line-height: 1.2em;
+    font-weight: 600; 
+    margin-top: 10px; /* Agregue un margen superior para separar el h3 del h2 */
+}
+
+.card .content .details .data h3 span
+{
+    font-size: 0.85em;
+    font-weight: 400;
+    opacity: 0.5;
+}
+
+.card .content .details .actionBtn
+{
+    display: flex;
+   /* justify-content: space-evenly;*/
+    visibility: hidden; /* Oculte el contenido */
+}
+
+.card:hover .content .details .actionBtn
+{
+    visibility: visible; /* Hago visible el contenido */
+}
+
+.card .content .details .actionBtn button
+{
+    padding: 10px 3px; /*le doy el espacio adentro del boton xa que haya aire y forma de rect.*/
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    font-weight: 500;
+    background: #ff4964;
+    color: #fff;
+    cursor: pointer;
+}
+
+.card .content .details .actionBtn button:nth-child(2)
+{
+    border: 1px solid #999;
+    color: #999;
+    background: #fff;
+}
+/* Estilos para las barras de progreso */
+.data {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .row {
+    display: flex;
+    gap: 30px; /* Agrego un espacio entre las dos columnas */
+  }
+  
+  .column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .section {
+    width: 100%;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+    
+  .section h4 {
+    font-size: 1em; /* Reduzco el tamaño del título de la sección */
+  }
+  
+  .section ul {
+    list-style: none; /*Evito las vinetas.*/
+    padding: 0;
+    margin: 0;
+  }
+  
+  .section ul li {
+    display: flex;
+    align-items: center;
+  }
+  
+  .section ul li span h6 {
+    font-size: 0.6em; /* Ajuste el tamaño de fuente */
+  }
+
+ .progressBarInside {
+    width: 100%;
+}
+
+.barContainer2 {
+    height: 6px;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+    margin: 0 30px;
+}
+
+.progressBarInside2 {
+    height: 100%;
+    background-color:#ff7649;
+    text-align: center;
+    line-height: 6px;
+    color: white;
+    font-size: 0.8em;
+    width: 100%;
+}
+
+  .barContainer 
+  {
+    height: 6px;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+    }
+  
+  .progressBarInside {
+    height: 100%;
+    background-color: #ff7649;
+    text-align: center;
+    line-height: 6px;
+    color: white;
+    font-size: 0.8em;
+  }
+  
+/* Estilo para la sección de conocimientos, Comptia y AWS. */
+.align-right {
+    margin-top: 0px; /* Espaciado superior */
+    margin-bottom: 30px; /* Espaciado inferior */
+}
+
+/* Estilo para Interés en Data Science */
+.details .section2 {
+    margin-top: 40px; /* Espaciado superior */
+    margin-bottom: 30px; /* Espaciado inferior */
+    margin: 0 30px; /* esto influye en Interés en Data Science por ej, izq y der.*/
+}
+ 
+.actionBtn {
+    /* Estilo para el boton de contactame */ 
+    margin-top: 35px; /* Espaciado superior */
+    margin-bottom: 5px; /* Espaciado inferior */
+    display: flex;
+    /*justify-content: space-evenly;*/ /* tambien lo tuve que sacar arriba, .card .content .details .actionBtn.*/
+    align-items: center; /* Centre verticalmente los logos */
+    justify-content: center;
+    gap: 5px; /* Ajuste el espacio entre los logos */
+}
+  
+  .actionBtn button {
+    top: 25px;
+   /* padding: 10px 15px;*/ /* ya esta arriba*/
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    font-weight: 500;
+    background: #ff4964;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  .actionBtn2 {
+    /* Estilo para las redes sociales */ 
+    margin-top: 10px; /* Espaciado superior */
+    margin-bottom: 20px; /* Espaciado inferior */
+    display: flex;
+    /*justify-content: space-evenly;*/ /* tambien lo tuve que sacar arriba, .card .content .details .actionBtn.*/
+    align-items: center; /* Centre verticalmente los logos */
+    justify-content: center;
+    gap: 5px; /* Ajuste el espacio entre los logos */
+}
